@@ -19,22 +19,30 @@ function test2(pokemon){
   return arr;
 }
 
+
 function App() {
   const [pokemon, setPokemon] = useState();
-  
   useEffect(() => {
+    pokedex(1);
+  }, []);
+
+  async function pokedex(id){
     baseUrl
-    .get("/1")
+    .get(`/${id}`)
     .then((response) => setPokemon(response.data))
     .catch((err) => {
       console.error("ops! ocorreu um erro" + err);
     });
-  }, []);
+  }
   
   let arr = [];
   let arrhabilidades = [];
   arr = test(pokemon);
   arrhabilidades = test2(pokemon);
+
+
+
+
 
 
   return (
@@ -44,6 +52,13 @@ function App() {
       <h2>Id: {pokemon?.id}</h2>
       <h2>Tipos; {arr.join(", ")}</h2>
       <h2>Habilidades; {arrhabilidades.join(", ")}</h2>
+
+      <form action="" onSubmit={e => e.preventDefault(e)}>
+        <label htmlFor="search">Pesquise pelo nome ou id do pokemon</label>
+        <input type="text" id='search' onChange={(event) => pokedex(event.target.value)} />
+        <button type="submit" >Pesquisar</button>
+      </form>
+
     </div>
   );
 }
