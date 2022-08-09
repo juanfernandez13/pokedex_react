@@ -18,15 +18,15 @@ function test2(pokemon){
   }
   return arr;
 }
-
+let idSearch;
 
 function App() {
   const [pokemon, setPokemon] = useState();
   useEffect(() => {
     pokedex(1);
   }, []);
-  let id = 1;
-  async function pokedex(){
+  
+  async function pokedex(id){
     console.log(id);
     if(id === null || id === undefined || id === ''){
       id = 1;
@@ -43,7 +43,7 @@ function App() {
   let arrhabilidades = [];
   arr = test(pokemon);
   arrhabilidades = test2(pokemon);
-
+  
 
 
 
@@ -59,8 +59,8 @@ function App() {
 
       <form action="" onSubmit={e => e.preventDefault(e)}>
         <label htmlFor="search">Pesquise pelo nome ou id do pokemon</label>
-        <input type="text" id='search' onChange={(event) => id = event.target.value} />
-        <button type="submit" onClick={() => pokedex()}>Pesquisar</button>
+        <input type="text" id='search' onChange={(event) => idSearch = event.target.value} />
+        <button type="submit" onClick={() => pokedex(idSearch)}>Pesquisar</button>
       </form>
 
     </div>
