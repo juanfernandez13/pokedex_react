@@ -2,7 +2,7 @@ import { useEffect, useState} from 'react';
 import './App.css';
 import baseUrl from './services/api';
 
-function test(pokemon){
+function typesData(pokemon){
   let arr = [];
   console.log(pokemon)
   for(let i in pokemon?.types){
@@ -10,7 +10,7 @@ function test(pokemon){
   }
   return arr;
 }
-function test2(pokemon){
+function abilitiesData(pokemon){
   let arr = [];
   console.log(pokemon)
   for(let i in pokemon?.abilities){
@@ -39,23 +39,18 @@ function App() {
     });
   }
   
-  let arr = [];
-  let arrhabilidades = [];
-  arr = test(pokemon);
-  arrhabilidades = test2(pokemon);
-  
-
-
-
-
+  let arrTypes = [];
+  let arrAbilidades = [];
+  arrTypes = typesData(pokemon);
+  arrAbilidades = abilitiesData(pokemon);
 
   return (
     <div className="App">
       <img src={pokemon?.sprites.front_default} alt="imagem do pokemon" />
       <h2>Nome: {pokemon?.name}</h2>
-      <h2>Id: {pokemon?.id}</h2>
-      <h2>Tipos; {arr.join(", ")}</h2>
-      <h2>Habilidades; {arrhabilidades.join(", ")}</h2>
+      <span>Id: {pokemon?.id}</span>
+      <span>Tipos; {arrTypes.join(", ")}</span>
+      <span>Habilidades; {arrAbilidades.join(", ")}</span>
 
       <form action="" onSubmit={e => e.preventDefault(e)}>
         <label htmlFor="search">Pesquise pelo nome ou id do pokemon</label>
