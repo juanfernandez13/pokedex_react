@@ -45,6 +45,7 @@ function App() {
     setErro(false); 
     setLoading(false);
     setArrTypes(typesData(response.data));
+    setArrAbilidades(abilitiesData(response.data));
     
   }
   
@@ -68,8 +69,7 @@ function App() {
     setErro(false);
   }
   
-  
-  arrAbilidades = abilitiesData(pokemon);
+
 
   return (
     <div className="App">
