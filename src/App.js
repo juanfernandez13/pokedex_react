@@ -15,7 +15,7 @@ function App() {
   const [arrAbilidades, setArrAbilidades] = useState([]);
 
   useEffect(() => {
-    pokedex(id);
+    pokedex(Math.floor(Math.random() * 897) +1);
   }, []);
   
   function typesData(pokemon){
@@ -69,7 +69,6 @@ function App() {
     setErro(false);
   }
   
-
 
   return (
     <div className="App">
