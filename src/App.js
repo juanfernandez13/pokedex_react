@@ -2,60 +2,89 @@ import { useEffect, useState} from 'react';
 import './App.css';
 import baseUrl from './services/api';
 
-function typesData(pokemon){
-  let arr = [];
-  console.log(pokemon)
-  for(let i in pokemon?.types){
-    arr.push(pokemon?.types[i].type.name)
-  }
-  return arr;
-}
-function abilitiesData(pokemon){
-  let arr = [];
-  console.log(pokemon)
-  for(let i in pokemon?.abilities){
-    arr.push(pokemon?.abilities[i].ability.name)
-  }
-  return arr;
-}
-let idSearch;
+
+
+
 
 function App() {
   const [pokemon, setPokemon] = useState();
+  const [id, setId] = useState(1);
+  const [erro, setErro] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [arrTypes, setArrTypes] = useState([]);
+  const [arrAbilidades, setArrAbilidades] = useState([]);
+
   useEffect(() => {
-    pokedex(1);
+    pokedex(id);
   }, []);
   
+  function typesData(pokemon){
+    let arr = [];
+    for(let i in pokemon?.types){
+      arr.push(pokemon?.types[i].type.name)
+    }
+    return arr;
+  }
+  function abilitiesData(pokemon){
+    let arr = [];
+    for(let i in pokemon?.abilities){
+      arr.push(pokemon?.abilities[i].ability.name)
+    }
+    return arr;
+  }
+
+  function erroAlert(err){
+    console.error("ops! ocorreu um erro" + err);
+    //window.alert("Nome ou Id inválidos");
+    setErro(true);
+    setLoading(false);
+  }
+
+  function getPokemon(response){
+    setPokemon(response.data); 
+    setErro(false); 
+    setLoading(false);
+    setArrTypes(typesData(response.data));
+    
+  }
+  
   async function pokedex(id){
-    console.log(id);
     if(id === null || id === undefined || id === ''){
       id = 1;
     }
+
+    setLoading(true);
+
     baseUrl
     .get(`/${id}`)
-    .then((response) => setPokemon(response.data))
+    .then((response) => getPokemon(response))
     .catch((err) => {
-      console.error("ops! ocorreu um erro" + err);
+      erroAlert(err);
     });
   }
+
+  function handleChange(event){
+    setId(event.target.value);
+    setErro(false);
+  }
   
-  let arrTypes = [];
-  let arrAbilidades = [];
-  arrTypes = typesData(pokemon);
+  
   arrAbilidades = abilitiesData(pokemon);
 
   return (
     <div className="App">
       <img src={pokemon?.sprites.front_default} alt="imagem do pokemon" />
       <h2>Nome: {pokemon?.name}</h2>
-      <span>Id: {pokemon?.id}</span>
-      <span>Tipos; {arrTypes.join(", ")}</span>
-      <span>Habilidades; {arrAbilidades.join(", ")}</span>
+      <p>Id: {pokemon?.id}</p>
+      <p>Tipos; {arrTypes.join(", ")}</p>
+      <p>Habilidades; {arrAbilidades.join(", ")}</p>
 
       <form action="" onSubmit={e => e.preventDefault(e)}>
         <label htmlFor="search">Pesquise pelo nome ou id do pokemon</label>
-        <input type="text" id='search' onChange={(event) => idSearch = event.target.value} />
-        <button type="submit" onClick={() => pokedex(idSearch)}>Pesquisar</button>
+        <input type="text" id='search' onChange={(event) => handleChange(event)} />
+        {erro && <span style={{color:'red', fontWeight:'300'}} >Nome ou Id inválidos</span>}
+        {loading && <span style={{color:'blue', fontWeight:'700'}} >Carregando...</span>}
+        <button type="submit" onClick={() => pokedex(id)}>Pesquisar</button>
       </form>
 
     </div>
