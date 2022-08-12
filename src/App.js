@@ -1,6 +1,8 @@
 import { useEffect, useState} from 'react';
 import './App.css';
 import baseUrl from './services/api';
+import leftPokeball from './assets/leftPokeball.svg';
+import rightPokeball from './assets/rightPokeball.svg';
 
 
 
@@ -40,8 +42,13 @@ function App() {
     setLoading(false);
   }
 
+  function nextID(value){
+    pokedex(id+value);
+  }
+
   function getPokemon(response){
-    setPokemon(response.data); 
+    setPokemon(response.data);
+    setId(response.data.id) 
     setErro(false); 
     setLoading(false);
     setArrTypes(typesData(response.data));
@@ -72,20 +79,55 @@ function App() {
 
   return (
     <div className="App">
-      <img src={pokemon?.sprites.front_default} alt="imagem do pokemon" />
-      <h2>Nome: {pokemon?.name}</h2>
-      <p>Id: {pokemon?.id}</p>
-      <p>Tipos; {arrTypes.join(", ")}</p>
-      <p>Habilidades; {arrAbilidades.join(", ")}</p>
-
-      <form action="" onSubmit={e => e.preventDefault(e)}>
+      <header className='headerApp'>
+        
+        <form className='barraDePesquisa' action="" onSubmit={e => e.preventDefault(e)}>
         <label htmlFor="search">Pesquise pelo nome ou id do pokemon</label>
         <input type="text" id='search' onChange={(event) => handleChange(event)} />
         {erro && <span style={{color:'red', fontWeight:'300'}} >Nome ou Id inválidos</span>}
         {loading && <span style={{color:'blue', fontWeight:'700'}} >Carregando...</span>}
         <button type="submit" onClick={() => pokedex(id)}>Pesquisar</button>
       </form>
+      </header>
+      
 
+      <main className='mainApp'>
+      <section className='rowButtonsPokemon'>
+        <button className='pokeballButton'
+          onClick={() => nextID(-1)}
+        >
+          <figure>
+            <img  src= {leftPokeball}/>
+          </figure>
+        </button>
+        <article className='containerPokemon'>
+          <figure className='imgPokemon'>
+            <img src={pokemon?.sprites.front_default} alt="imagem do pokemon" />
+          </figure>
+          <section className='dataPokemon'>
+            <h2>Nome: {pokemon?.name}</h2>
+            <p>Id: {pokemon?.id}</p>
+            <p>Tipos; {arrTypes.join(", ")}</p>
+            <p>Habilidades; {arrAbilidades.join(", ")}</p>
+          </section>
+        </article>
+
+        <button className='pokeballButton'
+        onClick={() => nextID(1)}
+        >
+          <figure>
+            <img  src= {rightPokeball}/>
+          </figure>
+        </button>
+
+      </section>
+      
+      <section>
+        <span>Visto por último</span>
+      </section>
+      </main>
+
+    
     </div>
   );
 }

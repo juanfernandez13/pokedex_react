@@ -1,0 +1,53 @@
+.app{
+    padding: 5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.headerApp{
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(211, 38, 7);
+    
+
+}
+.barraDePesquisa{
+    margin-top: 2rem;
+    background-color: chartreuse;
+    border-radius: 10px;
+    width:50vw;
+    height: 15vh;
+}
+
+.mainApp{
+    height: 90vh;
+    background-color: #2F2F2F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.rowButtonsPokemon{
+    display: flex;
+    flex-direction: row;
+}
+
+.pokeballButton{
+    all: unset;
+}
+
+.containerPokemon{
+    margin: 3rem 1.5rem;
+    background-color: aqua;
+    width: 60vw;
+    height: 30vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
