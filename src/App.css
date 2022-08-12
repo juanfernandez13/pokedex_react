@@ -18,6 +18,26 @@
     border-radius: 10px;
     width:50vw;
     height: 15vh;
+    display: flex;
+}
+
+.input{
+    all: unset;
+    margin: 1rem 2rem;
+    width: 60%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color:#FFF;
+    border-radius: 10px
+}
+.buttonInput{
+    all:unset;
+    margin: 1rem 0rem;
+    border-radius: 10px;
+    padding: 0.3rem 1rem;
+    background-color:purple;
+    
+    
 }
 
 .mainApp{

@@ -82,11 +82,10 @@ function App() {
       <header className='headerApp'>
         
         <form className='barraDePesquisa' action="" onSubmit={e => e.preventDefault(e)}>
-        <label htmlFor="search">Pesquise pelo nome ou id do pokemon</label>
-        <input type="text" id='search' onChange={(event) => handleChange(event)} />
+        <input className='input' type="text" id='search' placeholder='Pesquise um Pokemon' onChange={(event) => handleChange(event)} />
         {erro && <span style={{color:'red', fontWeight:'300'}} >Nome ou Id inválidos</span>}
         {loading && <span style={{color:'blue', fontWeight:'700'}} >Carregando...</span>}
-        <button type="submit" onClick={() => pokedex(id)}>Pesquisar</button>
+        <button className='buttonInput' type="submit" onClick={() => pokedex(id)}>Pesquisar</button>
       </form>
       </header>
       
