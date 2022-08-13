@@ -56,21 +56,22 @@ function App() {
     setLoading(false);
     setArrTypes(typesData(response.data));
     setArrAbilidades(abilitiesData(response.data));
+    setArrUltimos(ultimosPokemons());
     handleClearInput();
-    //setArrUltimos(ultimosPokemons());
+    
   }
   
-  /*function ultimosPokemons(){
+  function ultimosPokemons(){
     const arrAux = arrUltimos;
 
     if(arrAux.length >= 3){
-      //arrAux.shift;
+      arrAux.shift();
     }
 
     arrAux.push(pokemon);
     console.log(arrAux);
-    // return arrAux;
-  }*/
+    return arrAux;
+  }
 
   async function pokedex(id){
     if(id === null || id === undefined || id === ''){
@@ -145,7 +146,9 @@ function App() {
       <section className='sectionVistoUltimo'>
         <span>Visto por último</span>
         <section className='test'>
-          <ContainerEnd img={pokemon?.sprites.other['official-artwork'].front_default} id={pokemon?.id} nome={pokemon?.name}/>
+          {arrUltimos[2] && <ContainerEnd img={arrUltimos[2].sprites.other['official-artwork'].front_default} id={arrUltimos[2].id} nome={arrUltimos[2].name}/>}
+          {arrUltimos[1] && <ContainerEnd img={arrUltimos[1].sprites.other['official-artwork'].front_default} id={arrUltimos[1].id} nome={arrUltimos[1].name}/>}
+          {arrUltimos[0] && <ContainerEnd img={arrUltimos[0].sprites.other['official-artwork'].front_default} id={arrUltimos[0].id} nome={arrUltimos[0].name}/>}
         </section>
       </section>
       </main>

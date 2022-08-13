@@ -83,7 +83,8 @@
 .test{
     height: 20vh;
     border-top: 1px solid rgb(0, 255, 30);
-    
+    display: flex;
+    justify-content: space-around;
 }
 
 
