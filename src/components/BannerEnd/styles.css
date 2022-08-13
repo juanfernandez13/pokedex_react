@@ -1,0 +1,13 @@
+.sectionVistoUltimo{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 60vw;
+    max-width: 800px;
+}
+.test{
+    height: 20vh;
+    border-top: 1px solid rgb(0, 255, 30);
+    display: flex;
+    justify-content: space-around;
+}
