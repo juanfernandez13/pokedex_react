@@ -3,6 +3,7 @@ import './App.css';
 import baseUrl from './services/api';
 import leftPokeball from './assets/leftPokeball.svg';
 import rightPokeball from './assets/rightPokeball.svg';
+import ContainerEnd from './components/containerEnd';
 
 
 
@@ -11,9 +12,11 @@ import rightPokeball from './assets/rightPokeball.svg';
 function App() {
   const [pokemon, setPokemon] = useState();
   const [id, setId] = useState(1);
+  const [valueInput, setValueInput] = useState('');
   const [erro, setErro] = useState(false);
   const [loading, setLoading] = useState(false);
   const [arrTypes, setArrTypes] = useState([]);
+  const [arrUltimos, setArrUltimos] = useState([]);
   const [arrAbilidades, setArrAbilidades] = useState([]);
 
   useEffect(() => {
@@ -21,14 +24,14 @@ function App() {
   }, []);
   
   function typesData(pokemon){
-    let arr = [];
+    const arr = [];
     for(let i in pokemon?.types){
       arr.push(pokemon?.types[i].type.name)
     }
     return arr;
   }
   function abilitiesData(pokemon){
-    let arr = [];
+    const arr = [];
     for(let i in pokemon?.abilities){
       arr.push(pokemon?.abilities[i].ability.name)
     }
@@ -53,25 +56,43 @@ function App() {
     setLoading(false);
     setArrTypes(typesData(response.data));
     setArrAbilidades(abilitiesData(response.data));
-    
+    handleClearInput();
+    //setArrUltimos(ultimosPokemons());
   }
   
+  /*function ultimosPokemons(){
+    const arrAux = arrUltimos;
+
+    if(arrAux.length >= 3){
+      //arrAux.shift;
+    }
+
+    arrAux.push(pokemon);
+    console.log(arrAux);
+    // return arrAux;
+  }*/
+
   async function pokedex(id){
     if(id === null || id === undefined || id === ''){
       id = 1;
     }
-
     setLoading(true);
-
     baseUrl
     .get(`/${id}`)
     .then((response) => getPokemon(response))
     .catch((err) => {
       erroAlert(err);
     });
+    
+
+  }
+
+  function handleClearInput(){
+    setValueInput('');
   }
 
   function handleChange(event){
+    setValueInput(event.target.value);
     setId(event.target.value);
     setErro(false);
   }
@@ -82,7 +103,7 @@ function App() {
       <header className='headerApp'>
         
         <form className='barraDePesquisa' action="" onSubmit={e => e.preventDefault(e)}>
-        <input className='input' type="text" id='search' placeholder='Pesquise um Pokemon' onChange={(event) => handleChange(event)} />
+        <input className='input' type="text" id='search' placeholder='Pesquise um Pokemon' onChange={(event) => handleChange(event)} value={valueInput} />
         {erro && <span style={{color:'red', fontWeight:'300'}} >Nome ou Id inválidos</span>}
         {loading && <span style={{color:'blue', fontWeight:'700'}} >Carregando...</span>}
         <button className='buttonInput' type="submit" onClick={() => pokedex(id)}>Pesquisar</button>
@@ -101,7 +122,7 @@ function App() {
         </button>
         <article className='containerPokemon'>
           <figure className='imgPokemon'>
-            <img src={pokemon?.sprites.front_default} alt="imagem do pokemon" />
+            <img src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" />
           </figure>
           <section className='dataPokemon'>
             <h2>Nome: {pokemon?.name}</h2>
@@ -121,8 +142,11 @@ function App() {
 
       </section>
       
-      <section>
+      <section className='sectionVistoUltimo'>
         <span>Visto por último</span>
+        <section className='test'>
+          <ContainerEnd img={pokemon?.sprites.other['official-artwork'].front_default} id={pokemon?.id} nome={pokemon?.name}/>
+        </section>
       </section>
       </main>
 

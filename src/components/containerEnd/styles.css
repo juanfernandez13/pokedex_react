@@ -1,0 +1,10 @@
+.containerVistoUltimo{
+    height: 15vh;
+    width: 20vh;
+    background-color: yellow;
+    margin-top: 2rem;
+}
+
+.containerVistoUltimo img{
+    max-height: 10vh;
+}
