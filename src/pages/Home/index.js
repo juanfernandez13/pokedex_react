@@ -118,14 +118,16 @@ function PokedexPage(){
           </figure>
         </button>
         <article className='containerPokemon'>
-          <figure className='imgPokemon'>
-            <img src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" />
-          </figure>
-          <section className='dataPokemon'>
-            <h2>Nome: {pokemon?.name}</h2>
-            <p>Id: {pokemon?.id}</p>
-            <p>Tipos; {arrTypes.join(", ")}</p>
-            <p>Habilidades; {arrAbilidades.join(", ")}</p>
+        <section className="rowContainerID"><section className="ContainerID"><span><b>{pokemon?.id}</b></span></section></section>
+          <section className='rowDataPokemon'>
+            <figure className='imgPokemon'>
+              <img src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" />
+            </figure>
+            <section className='dataPokemon'>
+              <h2>Nome: {pokemon?.name}</h2>
+              <p>Tipos; {arrTypes.join(", ")}</p>
+              <p>Habilidades; {arrAbilidades.join(", ")}</p>
+            </section>
           </section>
         </article>
 

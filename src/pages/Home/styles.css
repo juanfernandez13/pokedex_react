@@ -5,7 +5,7 @@
     justify-content: center;
 }
 .headerApp{
-    height: 15vh;
+    height: 12vh;
     display: flex;
     justify-content: center;
     background-color: rgb(211, 38, 7);
@@ -17,7 +17,7 @@
     background-color: chartreuse;
     border-radius: 10px;
     width:50vw;
-    height: 15vh;
+    height: 12vh;
     display: flex;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .mainApp{
-    height: 90vh;
+    height: 79vh;
     background-color: #2F2F2F;
     display: flex;
     flex-direction: column;
@@ -58,15 +58,20 @@
 }
 
 .containerPokemon{
-    margin: 3rem 1.5rem;
+    margin: 2rem 1.5rem;
     background-color: aqua;
     width: 60vw;
-    height: 45vh;
+    height: 40vh;
     max-width: 800px;
     border-radius: 10px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
+}
+
+.rowDataPokemon{
+    display: flex;
+    flex-direction: row;
 }
 
 .containerPokemon img{
