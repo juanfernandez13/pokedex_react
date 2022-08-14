@@ -1,10 +1,37 @@
 .containerVistoUltimo{
-    height: 15vh;
-    width: 20vh;
+    height: 20vh;
+    width: 23vh;
     background-color: yellow;
     margin-top: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
 }
 
+.rowContainerID{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+}
+
+.rowImgPokemon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ContainerID{
+    color: white;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 0px 10px;
+}
+
+
 .containerVistoUltimo img{
-    max-height: 10vh;
+    max-height: 15vh;
 }
