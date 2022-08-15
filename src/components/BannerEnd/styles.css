@@ -4,10 +4,14 @@
     justify-content: start;
     width: 60vw;
     max-width: 800px;
+    color: #fff;
+    font-size: 1.2rem;
+    
 }
 .test{
-    height: 20vh;
+    height: 100%;
     border-top: 1px solid rgb(0, 255, 30);
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }

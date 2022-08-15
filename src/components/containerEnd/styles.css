@@ -3,10 +3,12 @@
     width: 23vh;
     background-color: yellow;
     margin-top: 2rem;
+    margin-left: 1rem;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: start;
+    padding-bottom: 1rem;
 
 }
 
