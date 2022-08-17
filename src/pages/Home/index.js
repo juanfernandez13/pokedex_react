@@ -7,6 +7,7 @@ import BannerEnd from '../../components/BannerEnd';
 
 function PokedexPage(){
     const [pokemon, setPokemon] = useState();
+    const [corDeFundo, setCorDeFundo] = useState();
     const [id, setId] = useState(1);
     const [valueInput, setValueInput] = useState('');
     const [erro, setErro] = useState(false);
@@ -15,13 +16,35 @@ function PokedexPage(){
     const [arrUltimos, setArrUltimos] = useState([]);
     const [arrAbilidades, setArrAbilidades] = useState([]);
 
+
+    const typeColors = {
+      fire: "#f04c00",
+      dark: "#18181a",
+      bug: "#476e28",
+      grass: "#2d8a33",
+      electric: "rgba(247, 195, 23, 1)",
+      steel: "#ccc",
+      water: "#0038FF",
+      ground: "#614c2f",
+      rock: "#D5D5D4",
+      fairy: "#e6369c",
+      ghost: "#552381",
+      poison: "#a069d1",
+      dragon: "#97B3E6",
+      psychich: "#eaeda1",
+      flying: "#157cd1",
+      fighting: "#5c5852",
+      normal: "#d37203",
+    };
+
     useEffect(() => {
         pokedex(Math.floor(Math.random() * 897) +1);
     }, []);
     
     function typesData(pokemon){
-        const arr = [];
-        for(let i in pokemon?.types){
+      setCorDeFundo(typeColors[pokemon?.types[0].type.name]);
+      const arr = [];
+      for(let i in pokemon?.types){
         arr.push(pokemon?.types[i].type.name)
         }
         return arr;
@@ -65,7 +88,6 @@ function PokedexPage(){
         }
 
         arrAux.push(pokemon);
-        console.log(arrAux);
         return arrAux;
     }
 
@@ -117,7 +139,7 @@ function PokedexPage(){
             <img  src= {leftPokeball}/>
           </figure>
         </button>
-        <article className='containerPokemon'>
+        <article className='containerPokemon' style={{backgroundColor:`${corDeFundo}`}}>
         <section className="rowContainerID"><section className="ContainerID"><span><b>{pokemon?.id}</b></span></section></section>
           <section className='rowDataPokemon'>
             <figure className='imgPokemon'>
