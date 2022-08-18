@@ -5,9 +5,29 @@ import leftPokeball from '../../assets/leftPokeball.svg';
 import rightPokeball from '../../assets/rightPokeball.svg';
 import BannerEnd from '../../components/BannerEnd';
 
+import fire from '../../assets/icons/fogo.svg';
+import dark from '../../assets/icons/dark.svg';
+import bug from '../../assets/icons/inseto.svg';
+import grass from '../../assets/icons/planta.svg';
+import electric from '../../assets/icons/electric.svg';
+import steel from '../../assets/icons/steel.svg';
+import water from '../../assets/icons/water.svg';
+import ground from '../../assets/icons/ground.svg';
+import rock from '../../assets/icons/rock.svg';
+import fairy from '../../assets/icons/fairy.svg';
+import ghost from '../../assets/icons/fantasma.svg';
+import poison from '../../assets/icons/venenoso.svg';
+import dragon from '../../assets/icons/dragao.svg';
+import psychich from '../../assets/icons/psychich.svg';
+import flying from '../../assets/icons/flying.svg';
+import fighting from '../../assets/icons/fighting.svg';
+import normal from '../../assets/icons/normal.svg';
+
+
 function PokedexPage(){
     const [pokemon, setPokemon] = useState();
     const [corDeFundo, setCorDeFundo] = useState();
+    const [tipoZero, setTipoZero] = useState();
     const [id, setId] = useState(1);
     const [valueInput, setValueInput] = useState('');
     const [erro, setErro] = useState(false);
@@ -36,6 +56,25 @@ function PokedexPage(){
       fighting: "#5c5852",
       normal: "#d37203",
     };
+    const typeIcon = {
+      fire: "../../assets/icons/fogo.svg",
+      dark: "#18181a",
+      bug: "#476e28",
+      grass: "#2d8a33",
+      electric: "rgba(247, 195, 23, 1)",
+      steel: "#ccc",
+      water: "#0038FF",
+      ground: "#614c2f",
+      rock: "#D5D5D4",
+      fairy: "#e6369c",
+      ghost: "#552381",
+      poison: "#a069d1",
+      dragon: "#97B3E6",
+      psychich: "#eaeda1",
+      flying: "#157cd1",
+      fighting: "#5c5852",
+      normal: "#d37203",
+    };
 
     useEffect(() => {
         pokedex(Math.floor(Math.random() * 897) +1);
@@ -46,51 +85,52 @@ function PokedexPage(){
       const arr = [];
       for(let i in pokemon?.types){
         arr.push(pokemon?.types[i].type.name)
-        }
-        return arr;
+      }
+      return arr;
     }
     function abilitiesData(pokemon){
-        const arr = [];
-        for(let i in pokemon?.abilities){
+      const arr = [];
+      for(let i in pokemon?.abilities){
         arr.push(pokemon?.abilities[i].ability.name)
-        }
-        return arr;
+      }
+      return arr;
     }
 
     function erroAlert(err){
-        console.error("ops! ocorreu um erro" + err);
-        //window.alert("Nome ou Id inválidos");
-        setErro(true);
-        setLoading(false);
+      console.error("ops! ocorreu um erro" + err);
+      //window.alert("Nome ou Id inválidos");
+      setErro(true);
+      setLoading(false);
     }
-
+    
     function nextID(value){
-        pokedex(id+value);
+      pokedex(id+value);
     }
-
+    
     function getPokemon(response){
-        setPokemon(response.data);
-        setId(response.data.id) 
-        setErro(false); 
-        setLoading(false);
-        setArrTypes(typesData(response.data));
-        setArrAbilidades(abilitiesData(response.data));
-        setArrUltimos(ultimosPokemons());
-        handleClearInput();
-        
+      setPokemon(response.data);
+      setId(response.data.id) 
+      setErro(false); 
+      setLoading(false);
+      setArrTypes(typesData(response.data));
+      setTipoZero(response.data.types[0].type.name);
+      console.log(typeIcon.fire);
+      setArrUltimos(ultimosPokemons());
+      handleClearInput();
+      
     }
     
     function ultimosPokemons(){
-        const arrAux = arrUltimos;
-
-        if(arrAux.length >= 3){
+      const arrAux = arrUltimos;
+      
+      if(arrAux.length >= 3){
         arrAux.shift();
-        }
-
-        arrAux.push(pokemon);
-        return arrAux;
+      }
+      
+      arrAux.push(pokemon);
+      return arrAux;
     }
-
+    
     async function pokedex(id){
         if(id === null || id === undefined || id === ''){
         id = 1;
@@ -149,6 +189,7 @@ function PokedexPage(){
               <h2>Nome: {pokemon?.name}</h2>
               <p>Tipos; {arrTypes.join(", ")}</p>
               <p>Habilidades; {arrAbilidades.join(", ")}</p>
+              <img src={typeIcon.fire} alt="tipo pokemom" />
             </section>
           </section>
         </article>
