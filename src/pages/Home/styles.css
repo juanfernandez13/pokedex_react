@@ -121,7 +121,20 @@
     max-height: 25vh;
 }
 
-@media screen  and (max-width: 1050px){
+.rowIconsType{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: end;
+}
+
+.iconType{
+    height: 9vh;
+    max-width: 5vw;
+    margin: 2vh 1vw;
+}
+
+@media screen  and (max-width: 1100px){
     .barraDePesquisa{
         margin-top: 1rem;
     }
@@ -136,8 +149,11 @@
     .containerPokemon{
     width: 50vw;
     height: 100%;
-    
     font-size: 1rem;
+    }
+
+    .iconType{
+        height: 7vh;
     }
 
     .containerPokemon img, .dataPokemon{

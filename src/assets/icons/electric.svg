@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.6, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 255.1 255.1" style="enable-background:new 0 0 255.1 255.1;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FBD100;}
-	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
-</style>
-<circle class="st0" cx="127.6" cy="127.6" r="121.6"/>
-<polygon class="st1" points="180.975,138.406 153.849,54.619 95.401,54.619 111.138,101.734 66.225,101.734 154.632,206.581 
-	137.343,138.406 "/>
+<svg width="256" height="258" viewBox="0 0 256 258" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_66_3)">
+<path d="M127.6 6C60.4422 6 5.99998 60.4422 5.99998 127.6C5.99998 194.758 60.4422 249.2 127.6 249.2C194.758 249.2 249.2 194.758 249.2 127.6C249.2 60.4422 194.758 6 127.6 6Z" fill="#FBD100"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M71 136.257L98.126 53L156.574 53L140.837 99.8167L185.75 99.8167L97.343 204L114.632 136.257L71 136.257Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_d_66_3" x="-4" y="0" width="263.1" height="263.1" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_66_3"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_66_3" result="shape"/>
+</filter>
+</defs>
 </svg>

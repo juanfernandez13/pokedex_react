@@ -5,23 +5,24 @@ import leftPokeball from '../../assets/leftPokeball.svg';
 import rightPokeball from '../../assets/rightPokeball.svg';
 import BannerEnd from '../../components/BannerEnd';
 
-import fire from '../../assets/icons/fogo.svg';
-import dark from '../../assets/icons/dark.svg';
-import bug from '../../assets/icons/inseto.svg';
-import grass from '../../assets/icons/planta.svg';
-import electric from '../../assets/icons/electric.svg';
-import steel from '../../assets/icons/steel.svg';
-import water from '../../assets/icons/water.svg';
-import ground from '../../assets/icons/ground.svg';
-import rock from '../../assets/icons/rock.svg';
-import fairy from '../../assets/icons/fairy.svg';
-import ghost from '../../assets/icons/fantasma.svg';
-import poison from '../../assets/icons/venenoso.svg';
-import dragon from '../../assets/icons/dragao.svg';
-import psychich from '../../assets/icons/psychich.svg';
-import flying from '../../assets/icons/flying.svg';
-import fighting from '../../assets/icons/fighting.svg';
-import normal from '../../assets/icons/normal.svg';
+import Fire from '../../assets/icons/fogo.svg';
+import Ice from '../../assets/icons/gelo.svg';
+import Dark from '../../assets/icons/dark.svg';
+import Bug from '../../assets/icons/inseto.svg';
+import Grass from '../../assets/icons/planta.svg';
+import Electric from '../../assets/icons/electric.svg';
+import Steel from '../../assets/icons/steel.svg';
+import Water from '../../assets/icons/water.svg';
+import Ground from '../../assets/icons/ground.svg';
+import Rock from '../../assets/icons/rock.svg';
+import Fairy from '../../assets/icons/fairy.svg';
+import Ghost from '../../assets/icons/fantasma.svg';
+import Poison from '../../assets/icons/venenoso.svg';
+import Dragon from '../../assets/icons/dragao.svg';
+import Psychic from '../../assets/icons/psychic.svg';
+import Flying from '../../assets/icons/flying.svg';
+import Fighting from '../../assets/icons/fighting.svg';
+import Normal from '../../assets/icons/normal.svg';
 
 
 function PokedexPage(){
@@ -33,6 +34,7 @@ function PokedexPage(){
     const [erro, setErro] = useState(false);
     const [loading, setLoading] = useState(false);
     const [arrTypes, setArrTypes] = useState([]);
+    const [type, setType] = useState();
     const [arrUltimos, setArrUltimos] = useState([]);
     const [arrAbilidades, setArrAbilidades] = useState([]);
 
@@ -45,6 +47,7 @@ function PokedexPage(){
       electric: "rgba(247, 195, 23, 1)",
       steel: "#ccc",
       water: "#0038FF",
+      ice: "#0038FF",
       ground: "#614c2f",
       rock: "#D5D5D4",
       fairy: "#e6369c",
@@ -57,23 +60,24 @@ function PokedexPage(){
       normal: "#d37203",
     };
     const typeIcon = {
-      fire: "../../assets/icons/fogo.svg",
-      dark: "#18181a",
-      bug: "#476e28",
-      grass: "#2d8a33",
-      electric: "rgba(247, 195, 23, 1)",
-      steel: "#ccc",
-      water: "#0038FF",
-      ground: "#614c2f",
-      rock: "#D5D5D4",
-      fairy: "#e6369c",
-      ghost: "#552381",
-      poison: "#a069d1",
-      dragon: "#97B3E6",
-      psychich: "#eaeda1",
-      flying: "#157cd1",
-      fighting: "#5c5852",
-      normal: "#d37203",
+      fire: Fire,
+      dark: Dark,
+      bug: Bug,
+      ice: Ice,
+      grass: Grass,
+      electric: Electric,
+      steel: Steel,
+      water: Water,
+      ground: Ground,
+      rock: Rock,
+      fairy: Fairy,
+      ghost: Ghost,
+      poison: Poison,
+      dragon: Dragon,
+      psychic: Psychic,
+      flying: Flying,
+      fighting: Fighting,
+      normal: Normal,
     };
 
     useEffect(() => {
@@ -82,6 +86,7 @@ function PokedexPage(){
     
     function typesData(pokemon){
       setCorDeFundo(typeColors[pokemon?.types[0].type.name]);
+      setType(pokemon?.types[0].type.name);
       const arr = [];
       for(let i in pokemon?.types){
         arr.push(pokemon?.types[i].type.name)
@@ -114,7 +119,7 @@ function PokedexPage(){
       setLoading(false);
       setArrTypes(typesData(response.data));
       setTipoZero(response.data.types[0].type.name);
-      console.log(typeIcon.fire);
+      setArrAbilidades(abilitiesData(response.data));
       setArrUltimos(ultimosPokemons());
       handleClearInput();
       
@@ -189,7 +194,10 @@ function PokedexPage(){
               <h2>Nome: {pokemon?.name}</h2>
               <p>Tipos; {arrTypes.join(", ")}</p>
               <p>Habilidades; {arrAbilidades.join(", ")}</p>
-              <img src={typeIcon.fire} alt="tipo pokemom" />
+              <section className='rowIconsType'>
+              <img className='iconType' src={typeIcon[`${arrTypes[0]}`]} alt="tipo pokemom" />
+              {arrTypes[1] && <img className='iconType' src={typeIcon[`${arrTypes[1]}`]} alt="tipo pokemom" />}
+              </section>
             </section>
           </section>
         </article>
