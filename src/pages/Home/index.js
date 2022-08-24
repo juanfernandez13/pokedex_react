@@ -188,7 +188,7 @@ function PokedexPage(){
         <section className="rowContainerID"><section className="ContainerID"><span><b>{pokemon?.id}</b></span></section></section>
           <section className='rowDataPokemon'>
             <figure className='imgPokemon'>
-              <img src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" />
+              <section className='containerImg'><img className='imgReal' src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" /></section>
             </figure>
             <section className='dataPokemon'>
               <h2>Nome: {pokemon?.name}</h2>
