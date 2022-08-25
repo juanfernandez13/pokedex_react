@@ -30,13 +30,11 @@ import Normal from '../../assets/icons/normal.svg';
 function PokedexPage(){
     const [pokemon, setPokemon] = useState();
     const [corDeFundo, setCorDeFundo] = useState();
-    const [tipoZero, setTipoZero] = useState();
     const [id, setId] = useState(1);
     const [valueInput, setValueInput] = useState('');
     const [erro, setErro] = useState(false);
     const [loading, setLoading] = useState(false);
     const [arrTypes, setArrTypes] = useState([]);
-    const [type, setType] = useState();
     const [arrUltimos, setArrUltimos] = useState([]);
     const [arrAbilidades, setArrAbilidades] = useState([]);
 
@@ -69,7 +67,6 @@ function PokedexPage(){
     
     function typesData(pokemon){
       setCorDeFundo(typeColors[pokemon?.types[0].type.name]);
-      setType(pokemon?.types[0].type.name);
       const arr = [];
       for(let i in pokemon?.types){
         arr.push(pokemon?.types[i].type.name)
@@ -103,7 +100,6 @@ function PokedexPage(){
       setErro(false); 
       setLoading(false);
       setArrTypes(typesData(response.data));
-      setTipoZero(response.data.types[0].type.name);
       setArrAbilidades(abilitiesData(response.data));
       setArrUltimos(ultimosPokemons());
       handleClearInput();
@@ -142,7 +138,6 @@ function PokedexPage(){
 
     function handleChange(event){
         setValueInput(event.target.value);
-        setId(event.target.value);
         setErro(false);
     }
   
@@ -155,7 +150,7 @@ function PokedexPage(){
         <input className='input' type="text" id='search' placeholder='Pesquise um Pokemon' onChange={(event) => handleChange(event)} value={valueInput} />
         {erro && <span style={{color:'red', fontWeight:'300'}} >Nome ou Id inválidos</span>}
         {loading && <span style={{color:'blue', fontWeight:'700'}} >Carregando...</span>}
-        <button className='buttonInput' type="submit" onClick={() => pokedex(id)}>Pesquisar</button>
+        <button className='buttonInput' type="submit" onClick={() => pokedex(valueInput)}>Pesquisar</button>
       </form>
       </header>
       
