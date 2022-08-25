@@ -3,8 +3,10 @@ import './styles.css';
 import baseUrl from '../../services/baseUrl';
 import leftPokeball from '../../assets/leftPokeball.svg';
 import rightPokeball from '../../assets/rightPokeball.svg';
+import invalidoLeft from '../../assets/invalidoLeft.svg';
+import invalidoRight from '../../assets/invalidoRight.svg';
 import BannerEnd from '../../components/BannerEnd';
-
+import typeColors from '../../const';
 import Fire from '../../assets/icons/fogo.svg';
 import Ice from '../../assets/icons/gelo.svg';
 import Dark from '../../assets/icons/dark.svg';
@@ -39,26 +41,7 @@ function PokedexPage(){
     const [arrAbilidades, setArrAbilidades] = useState([]);
 
 
-    const typeColors = {
-      fire: "#f04c00",
-      dark: "#18181a",
-      bug: "#476e28",
-      grass: "#2d8a33",
-      electric: "rgba(247, 195, 23, 1)",
-      steel: "#ccc",
-      water: "#0038FF",
-      ice: "#0038FF",
-      ground: "#614c2f",
-      rock: "#D5D5D4",
-      fairy: "#e6369c",
-      ghost: "#552381",
-      poison: "#a069d1",
-      dragon: "#97B3E6",
-      psychich: "#eaeda1",
-      flying: "#157cd1",
-      fighting: "#5c5852",
-      normal: "#d37203",
-    };
+    
     const typeIcon = {
       fire: Fire,
       dark: Dark,
@@ -109,7 +92,9 @@ function PokedexPage(){
     }
     
     function nextID(value){
-      pokedex(id+value);
+      if(id+value<=898 && id+value>=1){
+        pokedex(id+value);
+      }
     }
     
     function getPokemon(response){
@@ -181,7 +166,7 @@ function PokedexPage(){
           onClick={() => nextID(-1)}
         >
           <figure>
-            <img  src= {leftPokeball}/>
+            <img  src= {id > 1?leftPokeball:invalidoLeft}/>
           </figure>
         </button>
         <article className='containerPokemon' style={{backgroundColor:`${corDeFundo}`}}>
@@ -200,7 +185,7 @@ function PokedexPage(){
 
               <section className='rowIconsType'>
               <img className='iconType' src={typeIcon[`${arrTypes[0]}`]} alt="tipo pokemom" />
-              {arrTypes[1] && <img className='iconType' src={typeIcon[`${arrTypes[1]}`]} alt="tipo pokemom" />}
+              {arrTypes[1] && <img style ={{border: "0px"}}className='iconType' src={typeIcon[`${arrTypes[1]}`]} alt="tipo pokemom" />}
               </section>
 
             </section>
@@ -211,7 +196,7 @@ function PokedexPage(){
         onClick={() => nextID(1)}
         >
           <figure>
-            <img  src= {rightPokeball}/>
+            <img  src= {id+1<=898?rightPokeball:invalidoRight}/>
           </figure>
         </button>
       </section>
