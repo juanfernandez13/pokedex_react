@@ -187,17 +187,22 @@ function PokedexPage(){
         <article className='containerPokemon' style={{backgroundColor:`${corDeFundo}`}}>
         <section className="rowContainerID"><section className="ContainerID"><span><b>{pokemon?.id}</b></span></section></section>
           <section className='rowDataPokemon'>
-            <figure className='imgPokemon'>
-              <section className='containerImg'><img className='imgReal' src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" /></section>
-            </figure>
+           
+            
+            <section className='containerImg'>
+              <img className='imgReal' src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" />
+              </section>
+
             <section className='dataPokemon'>
               <h2>Nome: {pokemon?.name}</h2>
               <p>Tipos; {arrTypes.join(", ")}</p>
               <p>Habilidades; {arrAbilidades.join(", ")}</p>
+
               <section className='rowIconsType'>
               <img className='iconType' src={typeIcon[`${arrTypes[0]}`]} alt="tipo pokemom" />
               {arrTypes[1] && <img className='iconType' src={typeIcon[`${arrTypes[1]}`]} alt="tipo pokemom" />}
               </section>
+
             </section>
           </section>
         </article>
