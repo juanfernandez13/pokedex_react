@@ -77,16 +77,16 @@
 .pokeballButton{
     all: unset;
     cursor: pointer;
-    margin: 2rem 1rem;
+    margin: 1rem;
 }
 
 .pokeballButton img{
-    width: 15vw;
+    width: 13vw;
     max-width: 250px;
 }
 
 .containerImg {
-    height: 25vw;
+    height: 22vw;
     width: 25vw;
     max-width: 230px;
     max-height: 230px;
