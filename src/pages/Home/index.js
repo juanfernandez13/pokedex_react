@@ -30,6 +30,7 @@ import Normal from '../../assets/icons/normal.svg';
 function PokedexPage(){
     const [pokemon, setPokemon] = useState();
     const [corDeFundo, setCorDeFundo] = useState();
+    const [corDeFundo2, setCorDeFundo2] = useState();
     const [id, setId] = useState(1);
     const [valueInput, setValueInput] = useState('');
     const [erro, setErro] = useState(false);
@@ -67,6 +68,7 @@ function PokedexPage(){
     
     function typesData(pokemon){
       setCorDeFundo(typeColors[pokemon?.types[0].type.name]);
+      pokemon?.types[1]? setCorDeFundo2(typeColors[pokemon?.types[1].type.name]) : setCorDeFundo2(typeColors[pokemon?.types[0].type.name]) ;
       const arr = [];
       for(let i in pokemon?.types){
         arr.push(pokemon?.types[i].type.name)
@@ -164,7 +166,7 @@ function PokedexPage(){
             <img  src= {id > 1?leftPokeball:invalidoLeft}/>
           </figure>
         </button>
-        <article className='containerPokemon' style={{backgroundColor:`${corDeFundo}`}}>
+        <article className='containerPokemon' style={{background: `linear-gradient(${corDeFundo}, ${corDeFundo2})`}}>
         <section className="rowContainerID"><section className="ContainerID"><span><b>{pokemon?.id}</b></span></section></section>
           <section className='rowDataPokemon'>
            
