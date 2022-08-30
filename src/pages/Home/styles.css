@@ -18,6 +18,7 @@
 }
 .headerApp{
     height: 12vh;
+    min-height: 55px;
     display: flex;
     justify-content: center;
     background-color: #BA0F0F;
@@ -97,9 +98,12 @@
     align-items: center;
 }
 .containerImg img{
-    width: 20vw;
-    max-width: 190px;
+    height: 22vw;
+    width: 25vw;
+    max-width: 230px;
+    max-height: 230px;
 }
+
 
 .containerPokemon{
     color: #fff;

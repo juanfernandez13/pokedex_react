@@ -172,7 +172,7 @@ function PokedexPage(){
            
             
             <section className='containerImg'>
-              <img className='imgReal' src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" />
+             <figure> <img className='imgReal' src={pokemon?.sprites.other['official-artwork'].front_default} alt="imagem do pokemon" /></figure>
               </section>
 
             <section className='dataPokemon'>
