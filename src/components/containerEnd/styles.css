@@ -7,7 +7,7 @@
     margin-top: 2rem;
     margin-left: 1.2rem;
     border-radius: 10px;
-    display: flex;
+    max-width: 230px;
     flex-direction: column;
     justify-content: start;
 
@@ -41,5 +41,7 @@
 
 
 .containerVistoUltimo img{
-    max-height: 15vh;
+    max-width: 190px;
+    height: 15vh;
+    max-width: 190px;
 }

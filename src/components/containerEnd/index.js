@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import './styles.css';
 import typeColors from "../../const";
 
@@ -12,7 +11,6 @@ const ContainerEnd = (props) => {
                 <img className="imgPokemon" src={props.img} alt={props.nome} />
             
         </section>
-        
     </article>
 }
 
