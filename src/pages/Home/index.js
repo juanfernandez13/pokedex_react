@@ -166,7 +166,7 @@ function PokedexPage(){
             <img  src= {id > 1?leftPokeball:invalidoLeft}/>
           </figure>
         </button>
-        <article className='containerPokemon' style={{background: `linear-gradient(${corDeFundo}, ${corDeFundo2})`}}>
+        <article className='containerPokemon' style={{background: `linear-gradient(to top,${corDeFundo}, ${corDeFundo2})`}}>
         <section className="rowContainerID"><section className="ContainerID"><span><b>{pokemon?.id}</b></span></section></section>
           <section className='rowDataPokemon'>
            
