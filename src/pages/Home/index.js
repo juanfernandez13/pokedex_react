@@ -125,7 +125,7 @@ function PokedexPage(){
         }
         setLoading(true);
         baseUrl
-        .get(`/${id}`)
+        .get(`/${id.toLowerCase()}`)
         .then((response) => getPokemon(response))
         .catch((err) => {
         erroAlert(err);
