@@ -120,8 +120,11 @@ function PokedexPage(){
     }
     
     async function pokedex(id){
-        if(id === null || id === undefined || id === ''){
+        if(id === null || id === undefined || id === '' || id < 1){
         id = 1;
+        }
+        if(id > 898){
+          id = 898;
         }
         setLoading(true);
         baseUrl
