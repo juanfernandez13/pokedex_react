@@ -11,7 +11,8 @@
 </p>
 
 <p align="center">
-    <img src="./readme/webDesign.png"/>
+    <img src="./readme/webDesign.png" margin="0"/>
+    <p align="start">Clique aqui para acessar a <a href="https://pokedex-react-sage.vercel.app/">PokéDex</a>.</p>
 </p>
 
 ## 💻 Projeto
