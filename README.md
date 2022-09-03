@@ -11,8 +11,7 @@
 </p>
 
 <p align="center">
-    <img src="./readme/webDesign.png" width="830"/>
-    <img src="./readme/mobileDesign.jpeg" height="380"/>
+    <img src="./readme/webDesign.png"/>
 </p>
 
 ## 💻 Projeto
