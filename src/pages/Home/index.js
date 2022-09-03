@@ -111,7 +111,8 @@ function PokedexPage(){
     function ultimosPokemons(){
       const arrAux = arrUltimos;
       
-      if(arrAux.length >= 3){
+      
+        if(arrAux.length >= 3 ){
         arrAux.shift();
       }
       
