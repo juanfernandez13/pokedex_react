@@ -11,9 +11,14 @@
 </p>
 
 <p align="center">
-    <img src="./readme/webDesign.png" margin="0"/>
-    <p align="start">Clique aqui para acessar a <a href="https://pokedex-react-sage.vercel.app/">PokéDex</a>.</p>
-</p>
+    
+<!-- Inserir imagem com a #vitrinedev ao final do link -->
+![](https://github.com/juanfernandez13/pokedex_react/raw/main/readme/webDesign.png#vitrinedev)
+
+</p>  
+
+<p align="start">Clique aqui para acessar a <a href="https://pokedex-react-sage.vercel.app/">PokéDex</a>.</p>
+
 
 ## 💻 Projeto
 <p>
